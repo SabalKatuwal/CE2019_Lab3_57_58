@@ -8,4 +8,9 @@ class AbstractBST {
         virtual void min(int &output) = 0;
         virtual bool exists(int targetKey) = 0;
         virtual void inorder() = 0;
-}
+};
+
+struct data{
+    int key; 
+    int value;
+};
