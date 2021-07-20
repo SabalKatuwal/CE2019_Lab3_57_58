@@ -1,5 +1,6 @@
 {
     "files.associations": {
+<<<<<<< HEAD
         "vector": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -44,5 +45,10 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp"
+=======
+        "__node_handle": "cpp",
+        "algorithm": "cpp",
+        "iostream": "cpp"
+>>>>>>> arrayBST
     }
 }

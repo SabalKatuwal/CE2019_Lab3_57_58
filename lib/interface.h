@@ -6,7 +6,9 @@ class AbstractBST {
         virtual void add(int key, int value) = 0;
         virtual void max(int &output) = 0;
         virtual void min(int &output) = 0;
+            //virtual void remove(int keyToDelete)=0;
         virtual bool exists(int targetKey) = 0;
+<<<<<<< HEAD
         virtual void inorder() = 0;
 };
 
@@ -15,3 +17,8 @@ struct Data{
     int key; 
     int value;
 };
+=======
+        virtual bool inorder() = 0;
+};
+
+>>>>>>> arrayBST
