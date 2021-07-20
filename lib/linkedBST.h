@@ -31,6 +31,7 @@ class linkedBst{
         listNode* GetNewNode(int key, int value);
         void Inorder(listNode *root);
         bool Search(listNode* root,int key);
+        listNode *Delete(listNode *root, int key);
 };
 
 

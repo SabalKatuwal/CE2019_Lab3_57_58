@@ -59,3 +59,28 @@ bool linkedBst::Search(listNode* root,int key) {
 }
 
 
+listNode* linkedBst::Delete(listNode *root, int key){
+	if (root == NULL) return root; 
+	else if (key<root->data.key) root->left = Delete(root->left, key);
+	else if (key > root->data.key) root->right = Delete(root->right, key);
+	else{ //I found you buddy.
+		if(root->left == NULL && root->right == NULL){ //Case 1: No child
+			delete root;
+			root = NULL;
+		}
+		//Case2: One child
+		else if(root->right == NULL){
+			listNode *temp = root; 
+			root = root->right; 
+			delete temp;
+		}
+		//Case3: 2 children
+		else{
+			listNode *temp = min(root->right);
+			root->data = temp->data;
+			root->right = Delete(root->right, temp->data.key); 
+		}
+	}
+	return root;
+}
+
