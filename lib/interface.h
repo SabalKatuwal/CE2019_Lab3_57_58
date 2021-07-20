@@ -10,6 +10,7 @@ class AbstractBST {
         virtual void inorder() = 0;
 };
 
+
 struct Data{
     int key; 
     int value;

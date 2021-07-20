@@ -1,30 +1,61 @@
 #include <iostream>
 #include "..\lib\linkedBST.h"
+using namespace std;
 
-void linkedBst::min(int &output){
-
+listNode* linkedBst::GetNewNode(int key, int value) {
+	listNode* newNode = new listNode();
+	newNode->data.key = key;
+    newNode->data.value = value;
+	newNode->left = newNode->right = NULL;
+	return newNode;
 }
 
-listNode* linkedBst::insert(listNode *root, int key, int value){
-    
-    if (!root){
-        return new listNode(key, value);
-    }
 
-    if (key > root->data.key){ //If inserted key is greater than root.
-        root->right = insert(root->right, key, value);
-    }
-    else{
-        root->left = insert(root->left, key, value);
-    }
-    return root;
+listNode* linkedBst::min(listNode* root)
+{
+	while(root->left != NULL) root = root->left;
+	return root;
 }
 
-void linkedBst::inorder(listNode *root){
-    if (!root){
-        return;
-    }
-    inorder(root->left);
-    std::cout<<root->data.key<<" : "<<root->data.value<<std::endl;
-    inorder(root->right);
+
+listNode* linkedBst::add(listNode *root, int key, int value){
+	if(root == NULL) { // empty tree
+		root = GetNewNode(key, value);
+	}
+	// if data to be inserted is lesser, insert in left subtree. 
+	else if(key <= root->data.key) {
+		root->left = add(root->left, key, value);
+	}
+	// else, insert in right subtree. 
+	else {
+		root->right = add(root->right, key, value);
+	}
+	return root;
 }
+
+
+void linkedBst::Inorder(listNode *root) {
+	if(root == NULL) return;
+
+	Inorder(root->left);       //Visit left subtree
+	cout<<root->data.value<<endl;  //Print data
+	Inorder(root->right);      // Visit right subtree
+}
+
+
+bool linkedBst::Search(listNode* root,int key) {
+	if(root == NULL) {
+		return false;
+	}
+	else if(root->data.key == key) {
+		return true;
+	}
+	else if(key <= root->data.key) {
+		return Search(root->left, key);
+	}
+	else {
+		return Search(root->right, key);
+	}
+}
+
+

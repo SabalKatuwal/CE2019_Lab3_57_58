@@ -1,6 +1,7 @@
 #pragma once
 
 #include "interface.h"
+#include <vector>
 
 struct listNode{
     Data data;
@@ -21,13 +22,15 @@ struct listNode{
 };
 
 
-class linkedBst : AbstractBST{
+class linkedBst{
     public: 
         //linkedBst();
-        ~linkedBst();
-        void min(int &output);
-        listNode* insert(listNode *newNode, int key, int value);
-        void inorder(listNode *root);
+        //~linkedBst();
+        listNode* min(listNode* root);
+        listNode* add(listNode *root, int key, int value);
+        listNode* GetNewNode(int key, int value);
+        void Inorder(listNode *root);
+        bool Search(listNode* root,int key);
 };
 
 
