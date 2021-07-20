@@ -29,11 +29,11 @@ void BSTusingArray::add(int key, int value)
 {
     ArrayNode *p= new ArrayNode(key,value);
 
-    if(isEmpty())
-    {
-        nodes[1]= p;
-        return;
-    }
+    // if(isEmpty())
+    // {
+    //     nodes[1]= p;
+    //     return;
+    // }
     for(int i=1; i<MAX_NODE;)
     {
         if(nodes[i]==NULL)
@@ -41,7 +41,7 @@ void BSTusingArray::add(int key, int value)
             nodes[i]=p;
             break;
         }
-        else if(nodes[i]->key<key)
+        else if(nodes[i]->key>key)
         {
             i=2*i;
         }
@@ -54,14 +54,52 @@ void BSTusingArray::add(int key, int value)
 
 // void BSTusingArray::remove(int keyToDelete)
 // {
-//     //ArrayNode *p= new ArrayNode(key,value);
-
-//     if(isEmpty())
+//     if(exists(keyToDelete))
 //     {
-//         cout<<"tree is empty";
-//         return;
+//         int node=1;
+//         while (nodes[node]->key!=keyToDelete && nodes[node]!= NULL)
+//         {
+//             if (nodes[node]->key<keyToDelete)
+//             {
+//                 node= node*2;
+//             }
+//             else
+//             {
+//                 node= (node*2)+1;
+//             }
+//         }
+
+//         //keyToDelete is in leaf
+//         if(nodes[node*2]==NULL && nodes[(node*2)+1]==NULL)
+//         {
+//             nodes[node]=NULL;
+//         }
+
+//         //keyToDelete has one childi
+//         else if(nodes[node*2]==NULL || nodes[(node*2)+1]==NULL)
+//         {
+//             if(nodes[node*2]!= NULL)
+//             {
+//                 arrange(node*2);
+//             }
+//             else
+//             {
+//                 arrange(node*2+1);
+//             }
+//         }
+//         //keyToDelete has two subtrees
+//         else
+//         {
+//             int nodeRight=node*2+1;
+//             while(nodes[(nodeRight*2)] != NULL)
+//             {
+//                 nodeRight = nodeRight*2;
+//             }
+//             nodes[node]=nodes[nodeRight];
+
+
+//         }
 //     }
-//     if (keyToDelete<root->key)
 
 
 
@@ -76,17 +114,15 @@ void BSTusingArray::max(int &output)
     {
         cout<<"No key entered";
     }
-    for(int i=1; i<MAX_NODE;)
+    for(int i=1; i<MAX_NODE;i=2*i+1)
     {
         if(nodes[i]==NULL)
         {
-            i =i%2;  //gives parent
+            i =i/2;  //gives parent
             output= nodes[i]->key;
             break;
         }
-        else{
-            i=(2*i)+1;  //right subtree
-        }
+        
     }
 }
 void BSTusingArray::min(int &output)
@@ -128,25 +164,32 @@ bool BSTusingArray::exists(int targetKey)
     }
 }
 
-// void BSTusingArray::inorder(struct ArrayNode *root)
-// {
-//     if (isEmpty())
-//     {
-//         cout<<"empty";
-//     }
-//     inorder(root->left);
+void BSTusingArray::inorder(int index)
+{
+    if (nodes[index]==NULL)
+    {
+        return;
+    }
+    inorder(index*2);
 
-//     printf("%d",root->key);
+    cout<<nodes[index]->key<<" ";
 
-//     inorder(root->right);
-// }
+    inorder(index*2+1);
+}
+
+bool BSTusingArray::inorder()
+{
+    inorder(1);
+    
+}
+
 
 int BSTusingArray::DisplayArray()
 {
     for(int i = 0; i < MAX_NODE; i++)
     {
         if(nodes[i] != '\0')
-            cout << nodes[i];
+            cout << nodes[i]->key;
         else
             cout << "_";
     }

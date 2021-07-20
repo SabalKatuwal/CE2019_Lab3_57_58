@@ -1,6 +1,6 @@
-#include "interface.h"
+#include<iostream>
 #include "arrayBST.h"
-#include "arrayBST.cpp"
+using namespace std;
 
 int main()
 {
@@ -11,12 +11,17 @@ int main()
     a.add(2,53);
     a.add(6,54);
     a.add(15,55);
-    cout<<"the maximum key is"<<a.max()<<endl;
-    cout<<"the minimum key is"<<a.min()<<endl;
-    a.exists(6);
-    a.remove(15);
-    a.remove(10);
-    a.DisplayArray();
+    int maxKey;
+    a.max(maxKey);
+    cout<<maxKey;
+
+    int minKey;
+    a.max(minKey);
+    cout<<minKey;
+
+    //a.exists(6);
+    //a.DisplayArray();
+    a.inorder();
 
 
     return 0;

@@ -5,6 +5,7 @@
 
 class ArrayNode
 {
+    public:
     int key;
     int value;
     ArrayNode(int key, int value):key(key), value(value) {}
@@ -17,14 +18,15 @@ class BSTusingArray:public AbstractBST
 
     public:
     BSTusingArray();
-    ~BSTusingArray();
+    
     bool isEmpty();
     void add(int key, int value);
     void max(int &output);
     void min(int &output);
     //void remove(int keyToDelete);
     bool exists(int targetKey);
-    //void inorder();
+    bool inorder();
+    void inorder(int index);
     int DisplayArray();
     
 };
