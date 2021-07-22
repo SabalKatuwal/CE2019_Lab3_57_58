@@ -1,10 +1,12 @@
 <<<<<<< HEAD
 #include <iostream>
 #include "..\lib\linkedBST.h"
+#include "arrayBST.h"
 using namespace std;
 
 //Driver:
 int main(){
+    //FOR LINKED BST
     linkedBst *tree;
     listNode *root = NULL;
     //Insertion
@@ -38,14 +40,8 @@ int main(){
     //Traversal
     tree->Inorder(root);
     cout<<endl;
-}
-=======
-#include<iostream>
-#include "arrayBST.h"
-using namespace std;
 
-int main()
-{
+    //FOR ARRAY BST
     BSTusingArray a;
     a.add(10,50);
     a.add(4,51);
@@ -61,13 +57,16 @@ int main()
     a.max(minKey);
     cout<<minKey;
 
-    //a.exists(6);
-    //a.DisplayArray();
+    a.exists(6);
+    a.DisplayArray();
     a.inorder();
 
 
     return 0;
-
 }
+=======
+
+
+
 
 >>>>>>> arrayBST
